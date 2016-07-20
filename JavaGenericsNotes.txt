@@ -1,0 +1,59 @@
+1. Why Use Generics?
+1)Stronger type checks at compile time.
+2) Elimination of casts.
+3) Enabling programmers to implement generic algorithms.
+- By using generics, programmers can implement generic algorithms that work on collections of different types, 
+can be customized, and are type safe and easier to read.
+
+2. Generic Types
+- A generic type is a generic class or interface that is parameterized over types. The following Box class will be 
+modified to demonstrate the concept.
+类型参数化的类或接口
+
+3. A generic class is defined with the following format:
+class name<T1, T2, ..., Tn> { /* ... */ }
+
+4. Type Parameter Naming Conventions（类型参数命名习惯）
+
+By convention, type parameter names are single, uppercase letters. This stands in sharp contrast to the variable naming 
+conventions that you already know about, and with good reason: Without this convention, it would be difficult to tell the 
+difference between a type variable and an ordinary class or interface name.
+
+The most commonly used type parameter names are:
+
+    E - Element (used extensively by the Java Collections Framework)
+    K - Key
+    N - Number
+    T - Type
+    V - Value
+    S,U,V etc. - 2nd, 3rd, 4th types
+
+5. Raw Types
+A raw type is the name of a generic class or interface without any type arguments. 
+
+6.Generic Methods
+Generic methods are methods that introduce their own type parameters. This is similar to declaring a generic type, 
+but the type parameter's scope is limited to the method where it is declared. Static and non-static generic methods are 
+allowed, as well as generic class constructors.
+
+The syntax for a generic method includes a type parameter, inside angle brackets, and appears before the method's return type.
+For static generic methods, the type parameter section must appear before the method's return type.
+
+7. Bounded Type Parameters
+
+There may be times when you want to restrict the types that can be used as type arguments in a parameterized type. 
+For example, a method that operates on numbers might only want to accept instances of Number or its subclasses. 
+This is what bounded type parameters are for.
+
+8. Subtypes of Generics
+
+Given two concrete types A and B (for example, Number and Integer), MyClass<A> has no relationship to MyClass<B>, 
+regardless of whether or not A and B are related. The common parent of MyClass<A> and MyClass<B> is Object.
+
+Using the Collections classes as an example, ArrayList<E> implements List<E>, and List<E> extends Collection<E>. 
+So ArrayList<String> is a subtype of List<String>, which is a subtype of Collection<String>. 
+So long as you do not vary the type argument, the subtyping relationship is preserved between the types.
+
+9. Wildcards
+In generic code, the question mark (?), called the wildcard, represents an unknown type. 
+The wildcard can be used in a variety of situations: as the type of a parameter, field, or local variable; 
